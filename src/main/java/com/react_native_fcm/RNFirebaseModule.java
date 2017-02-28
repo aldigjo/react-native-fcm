@@ -12,6 +12,7 @@ import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
+import com.google.firebase.iid.FirebaseInstanceId;
 
 public class RNFirebaseModule extends ReactContextBaseJavaModule{
 
@@ -21,12 +22,10 @@ public class RNFirebaseModule extends ReactContextBaseJavaModule{
 
   @Override
   public String getName() {
-    return "RNFCM";
+    return "RNFirebaseModule";
   }
 
   //Parameters: Context = main application context
   @ReactMethod
-  public void getDeviceToken() {
-
-  }
+  public String getDeviceToken() { return FirebaseIDService.returnToken(); }
 }
