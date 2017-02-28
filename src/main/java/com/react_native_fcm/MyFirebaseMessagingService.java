@@ -1,4 +1,4 @@
-package com.uportMobile;
+package com.react_native_fcm;
 
 /**
  * Created by aldi on 1/30/17.
