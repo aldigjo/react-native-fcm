@@ -8,4 +8,4 @@
  *    ToastAndroid.LONG
  */
 import { NativeModules } from 'react-native';
-module.exports = NativeModules.RNFCM;
+module.exports = NativeModules.RNFirebaseModule;
