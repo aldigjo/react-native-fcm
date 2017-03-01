@@ -20,9 +20,7 @@ public class FirebaseIDService extends FirebaseInstanceIdService {
         sendRegistrationToServer(refreshedToken);
     }
 
-    public static String returnToken() {
-        return FirebaseInstanceId.getInstance().getToken();
-    }
+
 
     /**
      * Persist token to third-party servers.

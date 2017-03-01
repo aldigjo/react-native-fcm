@@ -14,7 +14,10 @@ import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.google.firebase.iid.FirebaseInstanceId;
 
+import android.util.Log;
+
 public class RNFirebaseModule extends ReactContextBaseJavaModule{
+  private final static String TAG = RNFirebaseModule.class.getCanonicalName();
 
   public RNFirebaseModule(ReactApplicationContext reactContext) {
     super(reactContext);
@@ -27,5 +30,8 @@ public class RNFirebaseModule extends ReactContextBaseJavaModule{
 
   //Parameters: Context = main application context
   @ReactMethod
-  public String getDeviceToken() { return FirebaseIDService.returnToken(); }
+  public void getFCMToken(Promise promise) {
+    Log.d(TAG, "Firebase token: " + FirebaseInstanceId.getInstance().getToken());
+    promise.resolve(FirebaseInstanceId.getInstance().getToken());
+  }
 }
