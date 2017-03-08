@@ -7,7 +7,7 @@
  * 2. int duration: The duration of the toast. May be ToastAndroid.SHORT or
  *    ToastAndroid.LONG
  */
-import { NativeModules, DeviceEventEmitterm, Platform } from 'react-native';
+import { NativeModules, DeviceEventEmitter, Platform } from 'react-native';
 
 
 export const FCMEvent = {
@@ -24,7 +24,7 @@ FCM.getInitialNotification = () => {
 }
 
 FCM.getFCMToken = () => {
-    return RNFIRMessaging.getFCMToken();
+    return RNFirebaseModule.getFCMToken();
 };
 
 FCM.on = (event, callback) => {
@@ -37,7 +37,7 @@ FCM.on = (event, callback) => {
 
 
 FCM.send = (senderId, payload) => {
-    RNFIRMessaging.send(senderId, payload);
+    RNFirebaseModule.send(senderId, payload);
 };
 
 export default FCM;

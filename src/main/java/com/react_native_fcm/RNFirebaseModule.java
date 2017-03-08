@@ -175,7 +175,7 @@ public class RNFirebaseModule extends ReactContextBaseJavaModule implements Acti
   }
 
   @Override
-  public void onActivityResult(int requestCode, int resultCode, Intent data) {
+  public void onActivityResult(Activity activity, int requestCode, int resultCode, Intent data) {
   }
 
   @Override
