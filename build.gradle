@@ -38,5 +38,5 @@ repositories {
 dependencies {
     compile 'com.google.firebase:firebase-core:10.2.0'
     compile 'com.google.firebase:firebase-messaging:10.2.0'
-    compile "com.facebook.react:react-native:+"
+    compile 'com.facebook.react:react-native:+'
 }
