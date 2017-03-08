@@ -20,7 +20,7 @@ const RNFirebaseModule = NativeModules.RNFirebaseModule;
 const FCM = {};
 
 FCM.getInitialNotification = () => {
-    return RNFIRMessaging.getInitialNotification();
+    return RNFirebaseModule.getInitialNotification();
 }
 
 FCM.getFCMToken = () => {
