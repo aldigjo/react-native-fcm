@@ -7,5 +7,38 @@
  * 2. int duration: The duration of the toast. May be ToastAndroid.SHORT or
  *    ToastAndroid.LONG
  */
-import { NativeModules } from 'react-native';
-module.exports = NativeModules.RNFirebaseModule;
+import { NativeModules, DeviceEventEmitterm, Platform } from 'react-native';
+
+
+export const FCMEvent = {
+  RefreshToken: 'FCMTokenRefreshed',
+  Notification: 'FCMNotificationReceived'
+}
+
+const RNFirebaseModule = NativeModules.RNFirebaseModule;
+
+const FCM = {};
+
+FCM.getInitialNotification = () => {
+    return RNFIRMessaging.getInitialNotification();
+}
+
+FCM.getFCMToken = () => {
+    return RNFIRMessaging.getFCMToken();
+};
+
+FCM.on = (event, callback) => {
+    if (!Object.values(FCMEvent).includes(event)) {
+        throw new Error(`Invalid FCM event subscription, use import {FCMEvent} from 'react-native-fcm' to avoid typo`);
+    };
+
+    return DeviceEventEmitter.addListener(event, callback);
+};
+
+
+FCM.send = (senderId, payload) => {
+    RNFIRMessaging.send(senderId, payload);
+};
+
+export default FCM;
+//module.exports = NativeModules.RNFirebaseModule;
