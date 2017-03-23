@@ -42,6 +42,8 @@ public class RNFirebaseModule extends ReactContextBaseJavaModule implements Acti
   public RNFirebaseModule(ReactApplicationContext reactContext) {
     super(reactContext);
     getReactApplicationContext().addActivityEventListener(this);
+    registerTokenRefreshHandler();
+    registerMessageHandler();
   }
 
   @Override
@@ -118,7 +120,7 @@ public class RNFirebaseModule extends ReactContextBaseJavaModule implements Acti
   }
 
   private void registerMessageHandler() {
-    IntentFilter intentFilter = new IntentFilter("com.evollu.react.fcm.ReceiveNotification");
+    IntentFilter intentFilter = new IntentFilter("com.uport.react.fcm.ReceiveNotification");
 
     getReactApplicationContext().registerReceiver(new BroadcastReceiver() {
       @Override
