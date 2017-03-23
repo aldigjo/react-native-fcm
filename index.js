@@ -32,6 +32,17 @@ FCM.on = (event, callback) => {
         throw new Error(`Invalid FCM event subscription, use import {FCMEvent} from 'react-native-fcm' to avoid typo`);
     };
 
+    if(event === FCMEvent.Notification){
+      return DeviceEventEmitter.addListener(event, async(data)=>{
+        try{
+          await callback(data);
+        } catch(err){
+          console.error('Notification handler err', err)
+          throw err;
+        }
+      })
+    }
+
     return DeviceEventEmitter.addListener(event, callback);
 };
 
